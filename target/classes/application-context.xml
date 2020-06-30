@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+	<bean id ="test"  class="ex01.SpringTest" scope="prototype"/>
+	
+	<!--호텔객체, 쉐프 객체 생성   -->
+	<bean id = "chef" class="ex02construct.Chef"/>
+	<bean id="hotel" class="ex02construct.Hotel">
+		<!--생성자 주입  -->
+		<constructor-arg ref="chef"/>
+	</bean>
+	
+	<!--세터 주입  -->
+	<bean id= "dbDev" class="ex03setter.DatabaseDev">
+		<property name="url" value="디비주소"/>
+		<property name="uid" value="아이디"/>
+		<property name="upw" value="비밀번호"/>
+	</bean>
+	
+	<!--세터주입(객체)  -->
+	<bean id="memberDAO" class="ex03setter.MemberDAO">
+		<property name="datasource" ref="dbDev"></property>
+	</bean>
+	
+		
+	<bean id="car" class="ex04.Car">
+		<property name="battery1" ref="Battery1"></property>
+		<property name="battery2" ref="Battery2"></property>
+	</bean>
+	
+	
+	
+	
+	
+	
+</beans>
